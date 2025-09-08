@@ -1,11 +1,4 @@
-/******************************************************************************
-
-Welcome to GDB Online.
-GDB online is an online compiler and debugger tool for C, C++, Python, Java, PHP, Ruby, Perl,
-C#, OCaml, VB, Swift, Pascal, Fortran, Haskell, Objective-C, Assembly, HTML, CSS, JS, SQLite, Prolog.
-Code, Compile, Run and Debug online from anywhere in world.
-
-*******************************************************************************/
+//1
 public class Main
 {
 	public static void main(String[] args) {
@@ -18,3 +11,18 @@ public class Main
 		}
 	}
 }
+//2
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class SortCharacters {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        char[] chars = input.toCharArray();
+        Arrays.sort(chars);
+        System.out.println(new String(chars));
+        scanner.close();
+    }
+}
+```
