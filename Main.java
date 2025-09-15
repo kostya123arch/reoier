@@ -25,4 +25,4 @@ public class SortCharacters {
         scanner.close();
     }
 }
-```
+
