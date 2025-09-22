@@ -131,3 +131,91 @@ int main() {
     return 0;
 }
 // задание 1.3
+#include <iostream>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int bSearch( vector<int>& a, int t) {
+    int l = 0;
+    int r = a.size();
+
+    while (l < r) {
+        int m = l + (r - l) / 2;
+        if (a[m] < t) {
+            l = m + 1;
+        } else {
+            r = m;
+        }
+    }
+    return l;
+}
+
+int main() {
+  int n;
+  cin >> n;
+    vector<int> v(n);
+    for (int i = 0; i < n;++i){
+      cin >> v[i];
+    }
+    sort(v.begin(),v.end());
+
+    int f = bSearch(v, 0);
+
+    int neg = f;
+    int pos = v.size() - neg;
+
+    if (pos > neg) {
+        cout << "положительных больше: " << pos << endl;
+    } else if (neg > pos) {
+        cout << "отрицательных больше: " << neg << endl;
+    } else if (neg == pos){
+      cout << "равное колличество: " << neg << " " <<  pos << endl;
+    } else {
+        cout << 0 << endl;
+    }
+
+    return 0;
+}
+//задание 1.4*
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+vector<int> cs(vector<int>& nums) {
+    int n = nums.size();
+    vector<int> counts(n, 0);
+
+    for (int i = 0; i < n; ++i) {
+        for (int j = i + 1; j < n; ++j) {
+            if (nums[j] < nums[i]) {
+                counts[i]++;
+            }
+        }
+    }
+
+    return counts;
+}
+
+int main() {
+  int n;
+  cin >> n;
+    vector<int> nums(n);
+    for(int i = 0; i < n;++i){
+      cin >> nums[i];
+    }
+    vector<int> res = cs(nums);
+
+    cout << "[";
+    for (int i = 0; i < res.size(); ++i) {
+        cout << res[i];
+        if (i < res.size() - 1) {
+            cout << ",";
+        }
+    }
+    cout << "]" << endl;
+
+    return 0;
+}
