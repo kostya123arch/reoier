@@ -26,4 +26,51 @@ int main() {
 
   return 0;
 }
-2.   
+2. #include <iostream>
+#include <vector>
+#include <cmath>
+
+using namespace std;
+
+vector<bool> sito(int n) {
+  vector<bool> pr(n + 1, true);
+  pr[0] = pr[1] = false;
+
+  for (int p = 2; p * p <= n; ++p) {
+    if (pr[p]) {
+      for (int i = p * p; i <= n; i += p) {
+        pr[i] = false;
+      }
+    }
+  }
+  return pr;
+}
+
+int main() {
+  int num;
+  cin >> num;
+
+  if (num <= 1) {
+    return 1;
+  }
+
+  int lim = sqrt(num);
+  vector<bool> pr = sito(lim);
+
+  for (int i = 2; i <= lim; ++i) {
+    if (pr[i] && num % i == 0) {
+      int cnt = 0;
+      while (num % i == 0) {
+        num /= i;
+        cnt++;
+      }
+      cout << i << " " << cnt << endl;
+    }
+  }
+
+  if (num > 1) {
+    cout << num << " " << 1 << endl;
+  }
+
+  return 0;
+}
