@@ -1,0 +1,29 @@
+1. #include <iostream>
+
+using namespace std;
+
+int gcd(int a, int b) {
+  while (b != 0) {
+    int temp = b;
+    b = a % b;
+    a = temp;
+  }
+  return a;
+}
+
+int gcd_three(int a, int b, int c) {
+  return gcd(gcd(a, b), c);
+}
+
+int main() {
+  int num1, num2, num3;
+
+  cin >> num1 >> num2 >> num3;
+
+  int result = gcd_three(num1, num2, num3);
+
+  cout << num1 << ", " << num2 << ", " << num3 << ", " << result << endl;
+
+  return 0;
+}
+2.   
